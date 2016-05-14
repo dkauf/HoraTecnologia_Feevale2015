@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <ImageView
@@ -18,7 +18,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
             android:textSize="30sp"
             android:text="Produto"
             android:id="@+id/title"
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30sp"
-            android:paddingRight="16dp"
+            android:paddingEnd="16dp"
             android:text="R$ 1.00"
             android:textStyle="bold|italic"
             android:textColor="@android:color/holo_red_light"
