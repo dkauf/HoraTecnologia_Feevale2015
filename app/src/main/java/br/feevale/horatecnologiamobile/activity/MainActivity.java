@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.List;
@@ -21,6 +23,7 @@ import retrofit.client.Response;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = ( RecyclerView ) findViewById( R.id.recyclerView );
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        progressBar = ( ProgressBar ) findViewById(R.id.progressBar);
 
         RestAdapter restAdapter = new RestAdapter.Builder()
 //                .setLogLevel(RestAdapter.LogLevel.FULL).setLog(new AndroidLog(SyncStateContract.Constants.CONTENT_DIRECTORY))
@@ -38,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         products.getProducts(new Callback<List<Item>>() {
             @Override
             public void success(List<Item> listItens, Response response) {
+                progressBar.setVisibility(View.GONE);
                 ItensAdapter itensAdapter =new ItensAdapter(MainActivity.this, listItens );
                 recyclerView.setAdapter( itensAdapter );
             }
